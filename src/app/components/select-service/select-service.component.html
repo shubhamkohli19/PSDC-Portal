@@ -1,0 +1,18 @@
+<div class="main">
+  <div class="container">
+    <div class="title">SERVICES OFFERED</div>
+    <div class="service-container">
+      <div class="services">
+        <div *ngFor="let category of services" class="loop" (click)="redirectTo(category.url)">
+          <div class="image">
+            <img
+              [src]="'assets/' + category.image + '.png'"
+              alt="{{ category.image }}"
+            />
+          </div>
+          <div class="service-name">{{ category.name | uppercase }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

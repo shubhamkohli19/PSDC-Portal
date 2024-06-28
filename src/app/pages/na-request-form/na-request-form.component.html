@@ -1,0 +1,90 @@
+<div style="width: 80vw; margin: auto;">
+  <form class="row g-3" (ngSubmit)="onSubmit()">
+    <div class="col-md-6">
+      <label for="name" class="form-label">Name</label>
+      <input type="text" class="form-control" id="name" [(ngModel)]="formData.name" name="name" required />
+    </div>
+    <div class="col-md-6">
+      <label for="designation" class="form-label">Designation</label>
+      <input type="text" class="form-control" id="designation" [(ngModel)]="formData.designation" name="designation" required />
+    </div>
+    <div class="col-md-6">
+      <label for="department" class="form-label">Department Name</label>
+      <select name="department" id="department" [(ngModel)]="formData.department" required class="form-select">
+        <option value="" disabled selected>Select Department</option>
+        <option *ngFor="let dept of departments">{{ dept }}</option>
+      </select>
+    </div>
+    <div class="col-md-6">
+      <label for="contactNo" class="form-label">Contact No.</label>
+      <input type="text" class="form-control" id="contactNo" [(ngModel)]="formData.contactNo" name="contactNo" required />
+    </div>
+    <div class="col-md-6">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" class="form-control" id="email" [(ngModel)]="formData.email" name="email" required />
+    </div>
+    <div class="col-md-6">
+      <label for="floor" class="form-label">Floor</label>
+      <input type="text" class="form-control" id="floor" [(ngModel)]="formData.floor" name="floor" required />
+    </div>
+    <div class="col-md-6">
+      <label for="roomNo" class="form-label">Room No.</label>
+      <input type="text" class="form-control" id="roomNo" [(ngModel)]="formData.roomNo" name="roomNo" required />
+    </div>
+    <div class="col-md-6">
+      <label for="deviceType" class="form-label">Device Type</label>
+      <select name="deviceType" id="deviceType" [(ngModel)]="formData.deviceType" required class="form-select">
+        <option value="" disabled selected>Select Device</option>
+        <option *ngFor="let device of devices">{{ device }}</option>
+      </select>
+    </div>
+    <div class="col-md-6">
+      <label for="locationType" class="form-label">Location Type</label>
+      <select name="locationType" id="locationType" [(ngModel)]="formData.locationType" required class="form-select" (change)="updateDistrictOptions()">
+        <option value="" disabled selected>Select Location Type</option>
+        <option *ngFor="let location of locationTypes" [value]="location.value">{{ location.label }}</option>
+      </select>
+    </div>
+    <div class="col-md-6" *ngIf="showDistrict">
+      <label for="district" class="form-label">District</label>
+      <select name="district" id="district" [(ngModel)]="formData.district" required class="form-select">
+        <option value="" disabled selected>Select District</option>
+        <option *ngFor="let district of districtOptions">{{ district }}</option>
+      </select>
+    </div>
+    <div class="col-md-6">
+      <label for="duration" class="form-label">Duration</label>
+      <select name="duration" id="duration" [(ngModel)]="formData.duration" required class="form-select">
+        <option value="" disabled selected>Select Duration</option>
+        <option *ngFor="let duration of durations">{{ duration }}</option>
+      </select>
+    </div>
+    <div class="col-md-6">
+      <label for="remarks" class="form-label">Remarks</label>
+      <textarea class="form-control" id="remarks" [(ngModel)]="formData.remarks" name="remarks"></textarea>
+    </div>
+    <div class="col-md-6">
+      <label for="reportingOfficerName" class="form-label">Reporting Officer Name</label>
+      <input type="text" class="form-control" id="reportingOfficerName" [(ngModel)]="formData.reportingOfficerName" name="reportingOfficerName" required />
+    </div>
+    <div class="col-md-6">
+      <label for="officeMobileNumber" class="form-label">Office Mobile Number</label>
+      <input type="text" class="form-control" id="officeMobileNumber" [(ngModel)]="formData.officeMobileNumber" name="officeMobileNumber" required />
+    </div>
+    <div class="col-md-6">
+      <label for="officerDesignation" class="form-label">Officer Designation</label>
+      <input type="text" class="form-control" id="officerDesignation" [(ngModel)]="formData.officerDesignation" name="officerDesignation" required />
+    </div>
+    <div class="col-md-6">
+      <label for="govEmail" class="form-label">Government Officer Email ID</label>
+      <input type="email" class="form-control" id="govEmail" [(ngModel)]="formData.govEmail" name="govEmail" required />
+    </div>
+    <div class="col-12">
+      <label for="inputAddress" class="form-label">Full Office Address (where to be integrated)</label>
+      <input type="text" class="form-control" id="inputAddress" [(ngModel)]="formData.inputAddress" name="inputAddress" required />
+    </div>
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary">Submit Request</button>
+    </div>
+  </form>
+</div>

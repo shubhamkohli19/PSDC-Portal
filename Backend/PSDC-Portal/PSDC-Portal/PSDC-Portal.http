@@ -1,0 +1,6 @@
+@PSDC_Portal_HostAddress = http://localhost:5259
+
+GET {{PSDC_Portal_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,0 +1,180 @@
+<header>
+  <div class="header-top px-2">
+    <div class="row">
+      <div class="col-xl-6 col-lg-3 d-flex col-sm-6 col-6 align-items-left">
+        <span class="goi"
+          ><a href="https://www.india.gov.in/" target="_blank" class="goi"
+            ><img
+              src="https://doc.ux4g.gov.in/assets/img/icon/in-flag.png"
+              class="img-fluid"
+              alt="indian flag"
+              loading="lazy"
+            /><strong>Government of India</strong></a
+          ></span
+        >
+      </div>
+      <div class="col-xl-6 col-lg-9 col-sm-6 col-6 text-end">
+        <span class="d-none d-md-inline">
+          <button
+            role="button"
+            id="btn-decrease"
+            class="font01"
+            onclick="decrease()"
+          >
+            -A
+          </button>
+          <button
+            role="button"
+            id="btn-orig"
+            class="font01 active01"
+            onclick="reset()"
+          >
+            A
+          </button>
+          <button
+            role="button"
+            id="btn-increase"
+            class="font01"
+            onclick="increase()"
+          >
+            A+</button
+          ><span class="partition">|</span>
+        </span>
+        <span class="light_dark_icon">
+          <input type="checkbox" class="light_mode" id="checkbox" />
+          <label for="checkbox" class="checkbox-label">
+            <i class="fas fa-moon"></i> <i class="fas fa-sun"></i>
+            <span class="ball"></span>
+          </label>
+        </span>
+        <span class="language01">
+          <form id="langForm" method="POST">
+            <i class="fal fa-globe"></i>
+            <select
+              name="language"
+              id="changeLang"
+              onchange="OnSelectedIndexChange()"
+            >
+              <option value="" selected="" disable="">Language</option>
+              <option value="en">English</option>
+            </select>
+          </form>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div
+    id="header-sticky"
+    class="header-area shadow-sm header-white px-2 pt-2 pb-2 mt-sm-0"
+  >
+    <div class="nav_custom d-flex align-items-center pl-15 pr-15">
+      <div class="logo">
+        <a href="">
+          <img
+            src="https://doc.ux4g.gov.in/assets/img/logo/national-emblem.png"
+            alt="ux4g logo"
+            loading="lazy"
+          />
+          <img
+            src="https://doc.ux4g.gov.in/assets/img/logo/company-logo.png"
+            alt="ux4g logo"
+            loading="lazy"
+          />
+        </a>
+        <a href="https://www.g20.in/en/" target="_blank">
+          <img
+            class="g20_logo"
+            src="https://doc.ux4g.gov.in/assets/img/logo/g20-summit.png"
+            alt="g20"
+            loading="lazy"
+            style="margin-left: 10px; margin-right: 30px"
+          />
+        </a>
+      </div>
+      <nav class="navbar flex-grow-1 navbar-expand-lg">
+        <div class="container-fluid">
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContentGov"
+            aria-controls="navbarSupportedContentGov"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <!-- <div class="collapse navbar-collapse" id="navbarSupportedContentGov">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  item1
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">item1</a></li>
+                  <li><a class="dropdown-item" href="#">item2</a></li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  item2
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">item1</a></li>
+                  <li><a class="dropdown-item" href="#">item2</a></li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  item3
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">item1</a></li>
+                  <li><a class="dropdown-item" href="#">item2</a></li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  item4
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">item1</a></li>
+                  <li><a class="dropdown-item" href="#">item2</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div> -->
+        </div>
+      </nav>
+      <span class="gap-3 d-flex float-end">
+        <button class="btn btn-outline-primary d-none d-sm-block" (click)="redirectToLogin()">
+          Login
+        </button>
+      </span>
+    </div>
+  </div>
+</header>
