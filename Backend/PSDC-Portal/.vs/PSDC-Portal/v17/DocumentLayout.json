@@ -1,7 +1,16 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\PSDC-Portal\\PSDC-Portal\\Backend\\PSDC-Portal\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{DDAE3DBE-9784-425F-B503-77C7AB6863CA}|PSDC-Portal\\PSDC-Portal.csproj|d:\\psdc-portal\\psdc-portal\\backend\\psdc-portal\\psdc-portal\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DDAE3DBE-9784-425F-B503-77C7AB6863CA}|PSDC-Portal\\PSDC-Portal.csproj|solutionrelative:psdc-portal\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DDAE3DBE-9784-425F-B503-77C7AB6863CA}|PSDC-Portal\\PSDC-Portal.csproj|d:\\psdc-portal\\psdc-portal\\backend\\psdc-portal\\psdc-portal\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{DDAE3DBE-9784-425F-B503-77C7AB6863CA}|PSDC-Portal\\PSDC-Portal.csproj|solutionrelative:psdc-portal\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,11 +18,37 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\PSDC-Portal\\PSDC-Portal\\Backend\\PSDC-Portal\\PSDC-Portal\\appsettings.json",
+              "RelativeDocumentMoniker": "PSDC-Portal\\appsettings.json",
+              "ToolTip": "D:\\PSDC-Portal\\PSDC-Portal\\Backend\\PSDC-Portal\\PSDC-Portal\\appsettings.json",
+              "RelativeToolTip": "PSDC-Portal\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAABGAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-07-01T06:54:09.703Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "LoginController.cs",
+              "DocumentMoniker": "D:\\PSDC-Portal\\PSDC-Portal\\Backend\\PSDC-Portal\\PSDC-Portal\\Controllers\\LoginController.cs",
+              "RelativeDocumentMoniker": "PSDC-Portal\\Controllers\\LoginController.cs",
+              "ToolTip": "D:\\PSDC-Portal\\PSDC-Portal\\Backend\\PSDC-Portal\\PSDC-Portal\\Controllers\\LoginController.cs*",
+              "RelativeToolTip": "PSDC-Portal\\Controllers\\LoginController.cs*",
+              "ViewState": "AQIAAD0AAAAAAAAAAAAuwFYAAAAkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-01T04:22:13.919Z",
+              "EditorCaption": ""
             }
           ]
         }

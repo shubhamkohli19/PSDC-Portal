@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "xrXGJojv6Yus4Dfn10+jtOFyLdbqbsADPavUMTwyjvo=",
+  "Source": "PSDC-Portal",
+  "BasePath": "_content/PSDC-Portal",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
