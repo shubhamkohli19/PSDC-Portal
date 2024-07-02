@@ -104,76 +104,13 @@
           >
             <span class="navbar-toggler-icon"></span>
           </button>
-          <!-- <div class="collapse navbar-collapse" id="navbarSupportedContentGov">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  item1
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">item1</a></li>
-                  <li><a class="dropdown-item" href="#">item2</a></li>
-                </ul>
-              </li>
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  item2
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">item1</a></li>
-                  <li><a class="dropdown-item" href="#">item2</a></li>
-                </ul>
-              </li>
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  item3
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">item1</a></li>
-                  <li><a class="dropdown-item" href="#">item2</a></li>
-                </ul>
-              </li>
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  item4
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">item1</a></li>
-                  <li><a class="dropdown-item" href="#">item2</a></li>
-                </ul>
-              </li>
-            </ul>
-          </div> -->
         </div>
       </nav>
       <span class="gap-3 d-flex float-end">
-        <button class="btn btn-outline-primary d-none d-sm-block" (click)="redirectToLogin()">
+        <button *ngIf="!isValid()" class="btn btn-outline-primary d-none d-sm-block" routerLink="/login">
           Login
         </button>
+        <button *ngIf="isValid()" class="btn btn-outline-primary d-none d-sm-block" (click)="logout()">Logout</button>
       </span>
     </div>
   </div>

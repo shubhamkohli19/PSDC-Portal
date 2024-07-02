@@ -52,7 +52,7 @@ export class LoginComponent {
       const login: Login = this.loginForm.value;
       this.loginService.login(login).subscribe(
         (errorMessage: string) => {
-          console.log(errorMessage)
+          console.log(errorMessage);
           this.errorMessages.push(errorMessage);
         }
       );
