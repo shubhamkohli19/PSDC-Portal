@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PSDC-Portal")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a46e75edc41b9736411fa89149eeaa8910fa9505")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+435bcead226017ab7e41bcd7d53bc62612662706")]
 [assembly: System.Reflection.AssemblyProductAttribute("PSDC-Portal")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PSDC-Portal")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
