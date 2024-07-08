@@ -11,7 +11,7 @@
     </div>
     <div class="col-md-6">
       <label for="department" class="form-label">Department Name</label>
-      <select type="number" name="department" id="department" [(ngModel)]="formData.departmentId" required
+      <select type="number" name="department" id="department" [(ngModel)]="formData.departmentName" required
         class="form-select">
         <option value="" disabled selected>Select Department</option>
         <option *ngFor="let dept of departments" [ngValue]="dept">{{ dept }}</option>

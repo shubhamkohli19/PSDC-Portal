@@ -1,0 +1,6 @@
+@Pawan_Portal_PSDC_HostAddress = http://localhost:5157
+
+GET {{Pawan_Portal_PSDC_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

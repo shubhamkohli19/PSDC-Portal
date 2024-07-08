@@ -8,7 +8,7 @@ import { NetworkRequest } from '../interfaces/network-request';
 })
 
 export class NetworkRequestService {
-  private apiUrl = 'https://localhost:44393/api/networkrequest';
+  private apiUrl = 'https://localhost:44352/api/NetworkRequest';
 
   constructor(private http: HttpClient) { }
 
