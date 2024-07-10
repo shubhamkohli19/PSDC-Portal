@@ -13,6 +13,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './pages/login/login.component';
 import { EmailService } from './services/email.service';
 import { LoginService } from './services/login.service';
+import { VerifyNaRequestComponent } from './pages/verification-pages/verify-na-request/verify-na-request.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { LoginService } from './services/login.service';
     HomepageComponent,
     NARequestFormComponent,
     LoginComponent,
-    DnsRequestComponent
+    DnsRequestComponent,
+    VerifyNaRequestComponent
   ],
   imports: [
     BrowserModule,

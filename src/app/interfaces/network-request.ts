@@ -9,7 +9,8 @@ export interface NetworkRequest {
     floorAddress: string;
     roomNo: string;
     locationTypeId: string;
-    locationId?: number;
+    district: string;
+    location: string;
     address: string;
     siteName?: string;
     email?: string;

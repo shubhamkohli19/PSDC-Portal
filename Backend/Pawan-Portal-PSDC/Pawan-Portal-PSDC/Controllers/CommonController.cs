@@ -1,6 +1,7 @@
 using Dapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Pawan_Portal_PSDC.Interfaces;
 using System.Data.SqlClient;
 
 namespace Pawan_Portal_PSDC.Controllers
@@ -29,11 +30,19 @@ namespace Pawan_Portal_PSDC.Controllers
       return Ok(requests);
     }
 
-    [HttpGet("get")]
-    public async Task<ActionResult<IEnumerable<string>>> GetNetworkRequest()
+    [HttpGet("getCategoryWithTypes")]
+    public async Task<ActionResult<IEnumerable<CategoryWithTypes>>> GetCategoryWithTypes()
     {
       using var connection = GetConnection();
-      var requests = await connection.QueryAsync<string>("Select name from departments where status = 1");
+      var requests = await connection.QueryAsync<CategoryWithTypes>("Select id, name, type_id from categoryWithTypes");
+      return Ok(requests);
+    }
+
+    [HttpGet("getLocations")]
+    public async Task<ActionResult<IEnumerable<Locations>>> GetLocations()
+    {
+      using var connection = GetConnection();
+      var requests = await connection.QueryAsync<Locations>("Select id, name, status, type_id, categorywithtype_id from locations");
       return Ok(requests);
     }
   }

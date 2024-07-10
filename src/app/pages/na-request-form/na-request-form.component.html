@@ -51,9 +51,18 @@
     </div>
     <div class="col-md-6" *ngIf="showDistrict">
       <label for="district" class="form-label">District</label>
-      <select name="district" id="district" [(ngModel)]="formData.locationId" required class="form-select">
+      <select name="district" id="district" [(ngModel)]="formData.district" required class="form-select"
+              (change)="updateLocationOptions()">
         <option value="" disabled selected>Select District</option>
-        <option *ngFor="let district of districtOptions" [ngValue]="district.value">{{ district.label }}</option>
+        <option *ngFor="let district of districtOptions" [ngValue]="district.id">{{ district.name }}</option>
+      </select>
+    </div>
+    
+    <div class="col-md-6" *ngIf="showLocation">
+      <label for="location" class="form-label">Location</label>
+      <select name="location" id="location" [(ngModel)]="formData.location" required class="form-select">
+        <option value="" disabled selected>Select Location</option>
+        <option *ngFor="let location of filteredLocations" [ngValue]="location.name">{{ location.name }}</option>
       </select>
     </div>
     <div class="col-md-6">
