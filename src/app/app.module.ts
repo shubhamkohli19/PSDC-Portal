@@ -4,16 +4,17 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SelectServiceComponent } from './components/select-service/select-service.component';
-import { HomepageComponent } from './pages/homepage/homepage.component';
-import { NARequestFormComponent } from './pages/na-request-form/na-request-form.component';
+import { HomepageComponent } from './pages/Frontend/homepage/homepage.component';
+import { NARequestFormComponent } from './pages/Frontend/na-request-form/na-request-form.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { DnsRequestComponent } from './pages/dns-request/dns-request.component';
+import { DnsRequestComponent } from './pages/Frontend/dns-request/dns-request.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './pages/login/login.component';
 import { EmailService } from './services/email.service';
 import { LoginService } from './services/login.service';
 import { VerifyNaRequestComponent } from './pages/verification-pages/verify-na-request/verify-na-request.component';
+import { DashboardComponent } from './pages/RolePanel/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { VerifyNaRequestComponent } from './pages/verification-pages/verify-na-r
     NARequestFormComponent,
     LoginComponent,
     DnsRequestComponent,
-    VerifyNaRequestComponent
+    VerifyNaRequestComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

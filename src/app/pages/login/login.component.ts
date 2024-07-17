@@ -54,6 +54,7 @@ export class LoginComponent {
         (errorMessage: string) => {
           console.log(errorMessage);
           this.errorMessages.push(errorMessage);
+          this.router.navigate(['dashboard']);
         }
       );
     }

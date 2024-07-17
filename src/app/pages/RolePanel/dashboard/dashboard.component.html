@@ -1,0 +1,240 @@
+<div class="wrapper">
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <div class="app-header-right">
+          <div class="header-btn-lg pr-0">
+            <div class="widget-content p-0">
+              <div class="widget-content-wrapper">
+                <div class="widget-content-left">
+                  <div class="btn-group">
+                    <a
+                      data-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                      class="p-0 btn"
+                    >
+                      Help Desk
+                      <i class="fa fa-angle-down ml-1 mt-2 opacity-8"></i>
+                    </a>
+
+                    <div
+                      tabindex="-1"
+                      role="menu"
+                      aria-hidden="true"
+                      class="dropdown-menu dropdown-menu-right"
+                    >
+                      <a
+                        href="http://10.44.89.31/pawan_portal/edit-profile"
+                        tabindex="0"
+                        class="dropdown-item"
+                        >Change Profile</a
+                      >
+                      <a
+                        href="http://10.44.89.31/pawan_portal/change-password"
+                        tabindex="0"
+                        class="dropdown-item"
+                        >Change Password
+                      </a>
+                      <div tabindex="-1" class="dropdown-divider"></div>
+                      <a
+                        class="dropdown-item"
+                        tabindex="0"
+                        href="http://10.44.89.31/pawan_portal/logout"
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                      >
+                        Log Out
+                        <form
+                          id="logout-form"
+                          action="http://10.44.89.31/pawan_portal/logout"
+                          method="POST"
+                          class="d-none"
+                        >
+                          <input
+                            type="hidden"
+                            name="_token"
+                            value="n5I0MfTh7u4o8piHudFVwEKHTyqUF3W78yAZhCTu"
+                          />
+                        </form>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </nav>
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <a href="#" class="brand-link">
+      <span class="brand-text font-weight-light">Helpdesk Pannel</span>
+    </a>
+    <div class="sidebar">
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <h6 style="color: #fff"><b>User Name :</b> Help Desk</h6>
+        <br />
+      </div>
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <h6 style="color: #fff"><b>User Email :</b></h6>
+        <br />
+      </div>
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex"></div>
+      <nav class="mt-2">
+        <ul
+          class="nav nav-pills nav-sidebar flex-column"
+          data-widget="treeview"
+          role="menu"
+          data-accordion="false"
+        >
+          <li class="nav-item">
+            <a
+              href="http://10.44.89.31/pawan_portal/helpDesk\dashboard"
+              class="nav-link"
+            >
+              <i class="fas fa-chart-line"></i>
+              <p>Dashboard</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              href="http://10.44.89.31/pawan_portal/helpDesk\network"
+              class="nav-link"
+            >
+              <i class="fas fa-chart-line"></i>
+              <p>Network Request</p>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </aside>
+  <div class="content-wrapper">
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0 text-dark">Dashboard</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12 col-sm-6 col-md-4">
+            <a
+              href="http://10.44.89.31/pawan_portal/helpDesk/network/allnafrequest"
+              class="small-box-footer"
+            >
+              <div class="info-box bg-purple">
+                <span class="info-box-icon bg-dark elevation-1"
+                  ><i class="fas fa-network-wired"></i
+                ></span>
+                <div class="info-box-content">
+                  <span class="info-box-text">Total Network Request</span>
+                  <span class="info-box-number"> 93 </span>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-12 col-sm-6 col-md-4">
+            <a
+              href="http://10.44.89.31/pawan_portal/helpDesk/network/search-status/processing"
+              class="small-box-footer"
+            >
+              <div class="info-box bg-yellow">
+                <span class="info-box-icon bg-dark elevation-1"
+                  ><i class="fas fa-network-wired"></i
+                ></span>
+                <div class="info-box-content">
+                  <span class="info-box-text">Processing Network Request</span>
+                  <span class="info-box-number"> 4 </span>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-12 col-sm-6 col-md-4">
+            <a
+              href="http://10.44.89.31/pawan_portal/helpDesk/network/search-status/forward"
+              class="small-box-footer"
+            >
+              <div class="info-box bg-dark">
+                <span class="info-box-icon bg-white elevation-1"
+                  ><i class="fas fa-network-wired"></i
+                ></span>
+                <div class="info-box-content">
+                  <span class="info-box-text">Forward Network Request</span>
+                  <span class="info-box-number"> 1 </span>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-12 col-sm-6 col-md-4">
+            <a
+              href="http://10.44.89.31/pawan_portal/helpDesk/network/search-status/reject"
+              class="small-box-footer"
+            >
+              <div class="info-box bg-red">
+                <span class="info-box-icon bg-dark elevation-1"
+                  ><i class="fas fa-network-wired"></i
+                ></span>
+                <div class="info-box-content">
+                  <span class="info-box-text">Reject Network Request</span>
+                  <span class="info-box-number"> 20 </span>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-12 col-sm-6 col-md-4">
+            <a
+              href="http://10.44.89.31/pawan_portal/helpDesk/network/search-status/completed"
+              class="small-box-footer"
+            >
+              <div class="info-box bg-success">
+                <span class="info-box-icon bg-dark elevation-1"
+                  ><i class="fas fa-network-wired"></i
+                ></span>
+                <div class="info-box-content">
+                  <span class="info-box-text">Complete Network Request</span>
+                  <span class="info-box-number"> 10 </span>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-12 col-sm-6 col-md-4">
+            <a
+              href="http://10.44.89.31/pawan_portal/helpDesk/network/search-status/withdrawal"
+              class="small-box-footer"
+            >
+              <div class="info-box bg-gradient-pink">
+                <span class="info-box-icon bg-dark elevation-1"
+                  ><i class="fas fa-network-wired"></i
+                ></span>
+                <div class="info-box-content">
+                  <span class="info-box-text">Withdrawl Network Request</span>
+                  <span class="info-box-number"> 4 </span>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      $(document).ready(function () {
+        setTimeout(function () {
+          location.reload(true);
+        }, 60000);
+      });
+    </script>
+  </div>
+  <footer class="main-footer">
+    <strong>Copyright © 2014- <a href="#">PAWAN</a>.</strong>
+    All rights reserved.
+    <div class="float-right d-none d-sm-inline-block"></div>
+  </footer>
+</div>

@@ -1,9 +1,9 @@
 import { Component, Injectable, OnInit } from '@angular/core';
-import { EmailService } from '../../services/email.service';
-import { NetworkRequestService } from './../../services/network-request.service';
-import { NetworkRequest } from '../../interfaces/network-request';
-import { SharedService } from '../../services/shared.service';
-import { CategoryWithTypes, Locations } from '../../interfaces/common';
+import { EmailService } from '../../../services/email.service';
+import { NetworkRequestService } from '../../../services/network-request.service';
+import { NetworkRequest } from '../../../interfaces/network-request';
+import { SharedService } from '../../../services/shared.service';
+import { CategoryWithTypes, Locations } from '../../../interfaces/common';
 
 @Component({
   selector: 'app-na-request-form',
@@ -129,7 +129,7 @@ export class NARequestFormComponent implements OnInit {
     govtMailData.append("body", govtMailBody);
     govtMailData.append("sender", "noreply@punjab.gov.in");
     govtMailData.append("cc", "legendthe727@gmail.com");
-    debugger;
+    
     this.emailService.sendEmail(govtMailData).subscribe(response => {
       console.log('Govt Email sent successfully', response);
       this.resetForm();
@@ -140,6 +140,7 @@ export class NARequestFormComponent implements OnInit {
   }
 
   generateOfficerEmailBody(formData: NetworkRequest, districtName: string | undefined): string {
+    const formDataEncoded = encodeURIComponent(JSON.stringify(formData));
     return `
       <!DOCTYPE html>
       <html>
@@ -181,7 +182,7 @@ export class NARequestFormComponent implements OnInit {
                   <td style="background-color: #f2f2f2; border: 1px solid #ddd;">${formData.email}</td>
                   <td style="background-color: #f2f2f2; border: 1px solid #ddd;">${formData.officerName}</td>
                   <td style="background-color: #f2f2f2; border: 1px solid #ddd;">${formData.officerMobile}</td>
-                  <td style="background-color: #f2f2f2; border: 1px solid #ddd;"><a href="http://localhost:4200/verify-na-request" class="btn btn-success btn-lg">Verify Network Request</a>
+                  <td style="background-color: #f2f2f2; border: 1px solid #ddd;"><a href="http://localhost:4200/verify-na-request?data=${formDataEncoded}" class="btn btn-success btn-lg">Verify Network Request</a>
 </td>
               </tr>
           </table>
