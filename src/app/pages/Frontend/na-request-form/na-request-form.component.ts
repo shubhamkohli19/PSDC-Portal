@@ -26,6 +26,7 @@ export class NARequestFormComponent implements OnInit {
     { value: 2, label: 'Districts' },
     { value: 3, label: 'Horizontal' }
   ];
+  len: number = 0;
   districtOptions: CategoryWithTypes[] = [];
   showDistrict = false;
   showLocation = false;
@@ -90,15 +91,20 @@ export class NARequestFormComponent implements OnInit {
     });
     this.sharedService.getCategoryWithTypes().subscribe(response => {
       this.categories = response;
-      console.log(this.categories, "Categories");
     });
     this.sharedService.getLocations().subscribe(response => {
       this.locations = response;
-      console.log(this.locations, "Locations");
     });
   }
 
   onSubmit() {
+    
+    this.networkRequestService.getTotalRequests().subscribe(response=> {
+      this.len = response;
+    })
+    this.formData.networkRequestId = "DGR-DEP-2024-" + this.len.toString();
+    console.log(this.formData.networkRequestId);
+    
     const userMail = this.formData.email;
     const userMailBody = this.generateUserEmailBody(this.formData, this.districtName);
     let userMailData: FormData = new FormData();

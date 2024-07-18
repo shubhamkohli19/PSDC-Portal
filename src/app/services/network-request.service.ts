@@ -16,6 +16,14 @@ export class NetworkRequestService {
     return this.http.get<NetworkRequest[]>(this.apiUrl);
   }
 
+  getTotalRequests(): Observable<number>{
+    return this.http.get<number>(`${this.apiUrl}/getTotalRequests`)
+  }
+
+  checkExistingRequest(id: string): Observable<boolean>{
+    return this.http.get<boolean>(`${this.apiUrl}/checkExistingRequest/${id}`);
+  }
+
   getNetworkRequest(id: number): Observable<NetworkRequest> {
     return this.http.get<NetworkRequest>(`${this.apiUrl}/${id}`);
   }

@@ -30,6 +30,14 @@ namespace Pawan_Portal_PSDC.Controllers
       return Ok(requests);
     }
 
+    [HttpGet("getTotalRequests")]
+    public async Task<ActionResult<IEnumerable<int>>> GetTotalRequests()
+    {
+      using var connection = GetConnection();
+      var length = await connection.QuerySingleAsync<int>("SELECT COUNT(*) FROM NetworkRequests");
+      return Ok(length);
+    }
+
     [HttpGet("{id}")]
     public async Task<ActionResult<NetworkRequest>> GetNetworkRequest(int id)
     {
@@ -42,11 +50,21 @@ namespace Pawan_Portal_PSDC.Controllers
       return Ok(request);
     }
 
+    [HttpGet("checkExistingRequest/{id}")]
+    public async Task<ActionResult<NetworkRequest>> CheckExistingRequest(string id)
+    {
+      using var connection = GetConnection();
+      var request = await connection.QueryFirstOrDefaultAsync<bool>("SELECT CASE WHEN EXISTS (SELECT 1 FROM NetworkRequests WHERE network_request_id = @Id) THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT) END;", new { Id = id });
+      
+      return Ok(request);
+    }
+
+
     [HttpPost]
     public async Task<ActionResult<NetworkRequest>> PostNetworkRequest([FromBody] NetworkRequest request)
     {
       const string query = @"
-                INSERT INTO NetworkRequests (
+                INSERT INTO NetworkRequests ( network_request_id,
                     contact_name, designation, department_id, device_type, contact_no, floorAddress, room_no,
                     location_type_id, location_id, address, site_name, email, mac_id_wired, mac_id_wifi, engineer_comment, engineer_id,
                     remarks, comment, status, reason, adhaar_number, declaration, user_id, user_to, role_id, officer_name, officer_mobile,
@@ -55,19 +73,17 @@ namespace Pawan_Portal_PSDC.Controllers
                     withdrawal_forwardtime_helpdesk, withdrawal_closed_by, duration, email_status, email_sent_time, created_at, updated_at
                 )
                 VALUES (
-                    @ContactName, @Designation, @DepartmentId, @DeviceType, @ContactNo, @FloorAddress, @RoomNo,
+                    @NetworkRequestId, @ContactName, @Designation, @DepartmentId, @DeviceType, @ContactNo, @FloorAddress, @RoomNo,
                     @LocationTypeId, @LocationId, @Address, @SiteName, @Email, @MacIdWired, @MacIdWifi, @EngineerComment, @EngineerId,
                     @Remarks, @Comment, @Status, @Reason, @AdhaarNumber, @Declaration, @UserId, @UserTo, @RoleId, @OfficerName, @OfficerMobile,
                     @OfficerDesignation, @GovtEmailId, @EmailVerifiedAt, @IsWithdrawal, @IsClosedBy, @RequestTime, @ForwardTimeEngineer,
                     @ForwardTimeHelpdesk, @WithdrawalReason, @WithdrawalStatus, @WithdrawalRequestDate, @WithdrawalForwardTimeEngineer,
                     @WithdrawalForwardTimeHelpdesk, @WithdrawalClosedBy, @Duration, @EmailStatus, @EmailSentTime, @CreatedAt, @UpdatedAt
-                );
-
-                SELECT CAST(SCOPE_IDENTITY() AS int) AS NetworkRequestId;";
+                );";
 
       using var connection = GetConnection();
-      var id = await connection.QuerySingleAsync<int>(query, request);
-      request.Id = id;
+      await connection.ExecuteAsync(query, request);
+
 
       return CreatedAtAction(nameof(GetNetworkRequest), new { id = request.Id }, request);
     }

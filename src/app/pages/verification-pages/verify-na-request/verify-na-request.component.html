@@ -1,9 +1,9 @@
 <div class="container mt-5">
-    <div class="card">
+    <div class="card" *ngIf="!reviewable">
         <div class="card-header">
             <h2 class="card-title">Network Access Request Approval</h2>
         </div>
-        <div class="card-body" *ngIf="reviewable">
+        <div class="card-body">
             <p>Do you want to approve this request?</p>
 
             <div class="row mb-3">
@@ -35,4 +35,5 @@
             </div>
         </div>
     </div>
+    <div *ngIf="reviewable">Request Already Entertained</div>
 </div>
