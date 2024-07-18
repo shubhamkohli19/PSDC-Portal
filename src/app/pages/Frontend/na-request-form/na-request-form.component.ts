@@ -4,6 +4,7 @@ import { NetworkRequestService } from '../../../services/network-request.service
 import { NetworkRequest } from '../../../interfaces/network-request';
 import { SharedService } from '../../../services/shared.service';
 import { CategoryWithTypes, Locations } from '../../../interfaces/common';
+import { Department } from '../../../interfaces/department';
 
 @Component({
   selector: 'app-na-request-form',
@@ -15,7 +16,7 @@ export class NARequestFormComponent implements OnInit {
   clickedDistObject : CategoryWithTypes | undefined;
   districtName : string | undefined;
   categories!: CategoryWithTypes[];
-  departments !: string[];
+  departments !: Department[];
   locations !: Locations[];
   filteredLocations !: Locations[];
   devices = ['Desktop', 'Laptop', 'Tablet', 'Smartphone'];
@@ -34,7 +35,7 @@ export class NARequestFormComponent implements OnInit {
     networkRequestId: '',
     contactName: '',
     designation: '',
-    departmentName: '',
+    departmentId: 0,
     deviceType: '',
     contactNo: '',
     floorAddress: '',
@@ -202,7 +203,7 @@ export class NARequestFormComponent implements OnInit {
               </tr>
               <tr>
                   <th style="width: 40%; padding-top: 12px; padding-bottom: 12px; text-align: left; border: 1px solid #ddd; background-color: #04AA6D; color: white;">Department Name</th>
-                  <td style="width: 60%; border: 1px solid #ddd; padding: 8px;">${formData.departmentName}</td>
+                  <td style="width: 60%; border: 1px solid #ddd; padding: 8px;">${formData.departmentId}</td>
               </tr>
               <tr style="background-color: #f2f2f2;">
                   <th style="width: 40%; padding-top: 12px; padding-bottom: 12px; text-align: left; background-color: #04AA6D; border: 1px solid #ddd; color: white;">Device Type</th>
@@ -322,7 +323,7 @@ export class NARequestFormComponent implements OnInit {
     </tr>
     <tr>
       <th style="width: 40%; padding-top: 12px; padding-bottom: 12px; text-align: left; border: 1px solid #ddd; background-color: #04AA6D; color: white;">Department Name</th>
-      <td style="width: 60%; border: 1px solid #ddd; padding: 8px;">${formData.departmentName}</td>
+      <td style="width: 60%; border: 1px solid #ddd; padding: 8px;">${formData.departmentId}</td>
     </tr>
     <tr style="background-color: #f2f2f2;">
       <th style="width: 40%; padding-top: 12px; padding-bottom: 12px; border: 1px solid #ddd; text-align: left; background-color: #04AA6D; color: white;">Device Type</th>
@@ -419,7 +420,7 @@ export class NARequestFormComponent implements OnInit {
       networkRequestId: '',
       contactName: '',
       designation: '',
-      departmentName: '',
+      departmentId: 0,
       deviceType: '',
       contactNo: '',
       floorAddress: '',

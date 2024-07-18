@@ -3,7 +3,7 @@ export interface NetworkRequest {
     networkRequestId: string;
     contactName: string;
     designation: string;
-    departmentName: string;
+    departmentId: number;
     deviceType: string;
     contactNo: string;
     floorAddress: string;

@@ -23,10 +23,10 @@ namespace Pawan_Portal_PSDC.Controllers
     }
 
     [HttpGet("getDepartments")]
-    public async Task<ActionResult<IEnumerable<string>>> GetNetworkRequests()
+    public async Task<ActionResult<IEnumerable<Department>>> GetNetworkRequests()
     {
       using var connection = GetConnection();
-      var requests = await connection.QueryAsync<string>("Select name from departments where status = 1");
+      var requests = await connection.QueryAsync<Department>("Select id, name from departments where status = 1");
       return Ok(requests);
     }
 

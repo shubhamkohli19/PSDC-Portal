@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { NetworkRequestService } from '../../../services/network-request.service';
 
 @Component({
   selector: 'app-verify-na-request',
@@ -12,8 +13,10 @@ export class VerifyNaRequestComponent implements OnInit{
   userName: string = '';
   userEmail: string = '';
   remarks: string = '';
+  comment: string = '';
+  reviewable: boolean = true;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, private naService: NetworkRequestService) {}
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
@@ -25,13 +28,27 @@ export class VerifyNaRequestComponent implements OnInit{
         console.log(this.userData);
       }
     });
+    if(this.userData.comment != ""){
+      this.reviewable = false;
+    }
+    
   }
 
   approveRequest() {
+    this.userData.status = "Pending";
+    this.userData.comment = this.comment;
     console.log('Request approved with remarks:', this.remarks);
+    this.naService.addNetworkRequest(this.userData).subscribe(response => {
+      console.log(response);
+    })
   }
-
+  
   rejectRequest() {
+    this.userData.status = "Rejected";
+    this.userData.comment = this.comment;
     console.log('Request rejected with remarks:', this.remarks);
+    this.naService.addNetworkRequest(this.userData).subscribe(response => {
+      console.log(response);
+    })
   }
 }

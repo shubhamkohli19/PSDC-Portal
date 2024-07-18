@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CategoryWithTypes, Locations } from '../interfaces/common';
+import { Department } from '../interfaces/department';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +13,8 @@ export class SharedService {
 
   constructor(private http: HttpClient) { }
 
-  getDepartments(): Observable<string[]> {
-    return this.http.get<string[]>(`${this.apiUrl}/getDepartments`);
+  getDepartments(): Observable<Department[]> {
+    return this.http.get<Department[]>(`${this.apiUrl}/getDepartments`);
   }
 
   getCategoryWithTypes(): Observable<CategoryWithTypes[]>{
