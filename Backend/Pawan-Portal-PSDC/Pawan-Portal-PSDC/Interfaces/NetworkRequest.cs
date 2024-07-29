@@ -51,4 +51,20 @@ namespace Pawan_Portal_PSDC.Interfaces
     public DateTime? CreatedAt { get; set; }
     public DateTime? UpdatedAt { get; set; }
   }
+
+  public class DashboardNA
+  {
+    public string network_request_id { get; set; }
+    public string Contact_Name { get; set; }
+    public string Designation { get; set; }
+    public string Contact_No { get; set; }
+    public string Address { get; set; }
+    public string Email { get; set; }
+    public string Status { get; set; }
+    public string Officer_Name { get; set; }
+    public string Officer_Mobile { get; set; }
+    public string Govt_Email_Id { get; set; }
+    public string Is_Closed_By { get; set; }
+    public DateTime? Created_At { get; set; }
+  }
 }
