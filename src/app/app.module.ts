@@ -15,6 +15,7 @@ import { EmailService } from './services/email.service';
 import { LoginService } from './services/login.service';
 import { VerifyNaRequestComponent } from './pages/verification-pages/verify-na-request/verify-na-request.component';
 import { DashboardComponent } from './pages/RolePanel/dashboard/dashboard.component';
+import { NetworkAccessTableComponent } from './pages/RolePanel/network-access-table/network-access-table.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { DashboardComponent } from './pages/RolePanel/dashboard/dashboard.compon
     LoginComponent,
     DnsRequestComponent,
     VerifyNaRequestComponent,
-    DashboardComponent
+    DashboardComponent,
+    NetworkAccessTableComponent,
   ],
   imports: [
     BrowserModule,

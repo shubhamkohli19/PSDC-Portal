@@ -8,7 +8,7 @@ import { NetworkRequest } from '../interfaces/network-request';
 })
 
 export class NetworkRequestService {
-  private apiUrl = 'https://localhost:44352/api/NetworkRequest';
+  private apiUrl = 'https://localhost:44356/api/NetworkRequest';
 
   constructor(private http: HttpClient) { }
 
@@ -16,11 +16,11 @@ export class NetworkRequestService {
     return this.http.get<NetworkRequest[]>(this.apiUrl);
   }
 
-  getTotalRequests(): Observable<number>{
+  getTotalRequests(): Observable<number> {
     return this.http.get<number>(`${this.apiUrl}/getTotalRequests`)
   }
 
-  checkExistingRequest(id: string): Observable<boolean>{
+  checkExistingRequest(id: string): Observable<boolean> {
     return this.http.get<boolean>(`${this.apiUrl}/checkExistingRequest/${id}`);
   }
 

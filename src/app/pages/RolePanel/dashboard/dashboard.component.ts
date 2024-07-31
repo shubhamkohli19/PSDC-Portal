@@ -8,7 +8,7 @@ import { NetworkMenu } from '../../../interfaces/networkMenu';
   styleUrl: './dashboard.component.css'
 })
 export class DashboardComponent implements OnInit{
-  userData!: NetworkMenu;
+  userData: NetworkMenu | undefined;
 
   constructor(private dashboardService: DashboardService){
   }
