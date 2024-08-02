@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class NetworkAccessTableComponent implements OnInit {
   networkRequests: DashboardTable[] = [];
   isHelpDesk: boolean = (localStorage.getItem('role') == 'helpDesk');
+  role: string | null = localStorage.getItem('role');
   paginatedRequests: DashboardTable[] = [];
   itemsPerPage = 5;
   currentPage = 1;
@@ -84,11 +85,92 @@ export class NetworkAccessTableComponent implements OnInit {
     console.log(`Tracking request with ID: ${requestId}`);
   }
 
-  redirectToAssigning(id: string | undefined){
+  redirectToAssigning(id: string | undefined) {
     this.router.navigate(['assignNetworkTask'], { state: { id } });
   }
 
-  redirectToCommenting(id: string | undefined){
+  redirectToCommenting(id: string | undefined) {
     this.router.navigate(['editEngineer'], { state: { id } });
+  }
+
+  displayCompletedButton(status: string): boolean {
+    if (this.isHelpDesk && status == 'Forward') {
+      return true;
+    }
+    return false;
+  }
+
+  displayCommentButton(request: DashboardTable): boolean {
+    if (this.isHelpDesk) {
+      return false;
+    }
+    else if (request.isBackup && this.role == 'backup' && !request.isCommented) {
+      return true;
+    }
+    else if (request.isServer && this.role == 'server' && !request.isCommented) {
+      return true;
+    }
+    else if (request.isStorage && this.role == 'storage' && !request.isCommented) {
+      return true;
+    }
+    else if (request.isNetwork && this.role == 'network' && !request.isCommented) {
+      return true;
+    }
+    return false;
+  }
+
+  displayLockedButton(request: DashboardTable): boolean {
+    if (this.isHelpDesk) {
+      return false;
+    }
+    else if (request.status != 'Forward') {
+      if (request.isBackup && this.role == 'backup' && request.isCommented) {
+        return true;
+      }
+      else if (request.isServer && this.role == 'server' && request.isCommented) {
+        return true;
+      }
+      else if (request.isStorage && this.role == 'storage' && request.isCommented) {
+        return true;
+      }
+      else if (request.isNetwork && this.role == 'network' && request.isCommented) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  displayRejectButton(request: DashboardTable): boolean {
+    if (this.isHelpDesk) {
+      return true;
+    }
+    else if (request.status != 'Forward') {
+      if (request.isBackup && this.role == 'backup') {
+        return true;
+      }
+      else if (request.isServer && this.role == 'server') {
+        return true;
+      }
+      else if (request.isStorage && this.role == 'storage') {
+        return true;
+      }
+      else if (request.isNetwork && this.role == 'network') {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  changeStatusForward(id: string | undefined) {
+    console.log(id);
+    this.dashboardService.engineerResolved(id).subscribe((res) => {
+      console.log(res);
+      this.fetchNetworkRequests();
+    });
+
+  }
+  viewRequest(id: string | undefined) {
+    this.router.navigate(['view-request'], { state: { id } });
   }
 }

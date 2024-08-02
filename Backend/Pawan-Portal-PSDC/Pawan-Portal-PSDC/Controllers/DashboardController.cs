@@ -47,7 +47,7 @@ namespace Pawan_Portal_PSDC.Controllers
       using var connection = GetConnection();
       var query = @"
        SELECT [network_request_id] ,[contact_name] ,[designation], [contact_no] ,[address] ,[email] ,[status]  ,[officer_name] ,[officer_mobile]
-         ,[govt_email_id], [is_closed_by] ,[created_at], [isCommented] FROM NetworkRequests";
+         ,[govt_email_id], [is_closed_by] ,[created_at], [isCommented], [isNetwork], [isStorage], [isServer], [isBackup] FROM NetworkRequests";
 
       var dashboardData = await connection.QueryAsync<DashboardNA>(query);
       return Ok(dashboardData);
@@ -115,7 +115,7 @@ namespace Pawan_Portal_PSDC.Controllers
       return NoContent();
     }
 
-    [HttpPut("engineerResolved")]
+    [HttpPut("engineerResolved/{id}")]
     public async Task<IActionResult> PutNetworkRequest(string id)
     {
       using var connection = GetConnection();
@@ -132,6 +132,27 @@ namespace Pawan_Portal_PSDC.Controllers
       }
 
       return NoContent();
+    }
+
+    [HttpGet("getViewRequests")]
+    public async Task<ActionResult<IEnumerable<ViewRequest>>> GetViewRequests()
+    {
+      try
+      {
+        using var connection = GetConnection();
+
+        var query = @"SELECT network_request_id, contact_name, designation, department_id, device_type, contact_no, 
+              floorAddress, room_no, location_type_id, location_id, address, site_name, 
+              email, status, remarks, officer_name, officer_mobile, officer_designation, 
+              govt_email_id, duration FROM NetworkRequests";
+
+        var requestData = await connection.QueryAsync<ViewRequest>(query);
+        return Ok(requestData.ToList());
+      }
+      catch (Exception ex)
+      {
+        return StatusCode(500, "Internal server error: " + ex.Message);
+      }
     }
   }
 }

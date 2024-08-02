@@ -19,6 +19,8 @@ export class NARequestFormComponent implements OnInit {
   departments !: Department[];
   locations !: Locations[];
   filteredLocations !: Locations[];
+  networkId !: string;
+  displaySuccess: boolean = false;
   devices = ['Desktop', 'Laptop', 'Tablet', 'Smartphone'];
   durations = ['1 month', '3 months', '6 months', '1 year'];
   locationTypes = [
@@ -99,18 +101,23 @@ export class NARequestFormComponent implements OnInit {
     this.sharedService.getLocations().subscribe(response => {
       this.locations = response;
     });
+    this.networkRequestService.getTotalRequests().subscribe(response=> {
+      this.len = response + 1;
+    })
   }
 
   onSubmit() {
     
     this.networkRequestService.getTotalRequests().subscribe(response=> {
-      this.len = response;
+      this.len = response + 1;
     })
-    this.formData.networkRequestId = "DGR-DEP-2024-" + this.len.toString();
-    console.log(this.formData.networkRequestId);
 
     const year = new Date().getFullYear();
     this.formData.networkRequestId = `${this.selectedDistrictShortName}-${this.selectedLocationShortName}-${year}-${this.len.toString()}`;
+    if(this.formData.networkRequestId){
+      this.networkId = this.formData.networkRequestId;
+      this.displaySuccess = true;
+    }
     console.log(this.formData.networkRequestId);
     
     const userMail = this.formData.email;

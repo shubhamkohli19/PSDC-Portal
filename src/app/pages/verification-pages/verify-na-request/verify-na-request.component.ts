@@ -13,6 +13,7 @@ export class VerifyNaRequestComponent implements OnInit{
   userData: any;
   userName: string = '';
   userEmail: string = '';
+  networkId: string = '';
   remarks: string = '';
   comment: string = '';
   reviewable: boolean = true;
@@ -25,6 +26,8 @@ export class VerifyNaRequestComponent implements OnInit{
         this.userData = JSON.parse(decodeURIComponent(params['data']));
         this.userName = this.userData.contactName;
         this.userEmail = this.userData.email;
+        this.networkId = this.userData.networkRequestId;
+        console.log(this.networkId);
         this.remarks = this.userData.remarks;
         console.log(this.userData);
       }
@@ -314,7 +317,7 @@ export class VerifyNaRequestComponent implements OnInit{
       console.log('Email sent successfully', response);
     }, error => {
       console.error('Error sending email', error);
-    });    
+    });
     this.reviewable = true;
   }
 

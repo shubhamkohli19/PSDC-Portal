@@ -67,5 +67,9 @@ namespace Pawan_Portal_PSDC.Interfaces
     public string Is_Closed_By { get; set; }
     public DateTime? Created_At { get; set; }
     public bool isCommented { get; set; }
+    public bool isNetwork { get; set; }
+    public bool isStorage { get; set; }
+    public bool isServer { get; set; }
+    public bool isBackup { get; set; }
   }
 }

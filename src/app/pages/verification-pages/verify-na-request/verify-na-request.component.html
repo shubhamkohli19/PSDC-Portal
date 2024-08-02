@@ -1,8 +1,10 @@
 <div class="container mt-5">
     <div class="card" *ngIf="!reviewable">
         <div class="card-header">
-            <h2 class="card-title">Network Access Request Approval</h2>
+            <h1 class="card-title">Network Access Request Approval</h1>
+            
         </div>
+        <ul>Network ID: {{networkId}}</ul>
         <div class="card-body">
             <p>Do you want to approve this request?</p>
 

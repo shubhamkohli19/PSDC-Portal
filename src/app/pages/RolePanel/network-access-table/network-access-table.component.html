@@ -105,16 +105,55 @@
                         </th>
                         <td>{{ request.network_request_id }}</td>
                         <td>
-                          <button class="btn btn-sm btn-info mr-2">👁️</button>
+                          <button
+                            class="btn btn-sm btn-info mr-2"
+                            (click)="viewRequest(request.network_request_id)"
+                          >
+                            👁️
+                          </button>
+                          <button
+                            class="btn btn-sm mr-2"
+                            *ngIf="displayRejectButton(request)"
+                          >
+                            ❌
+                          </button>
                           <button
                             class="btn btn-sm btn-warning mr-2"
-                            *ngIf="isHelpDesk && (request.status == 'Pending')" (click)="redirectToAssigning(request.network_request_id)"
+                            *ngIf="isHelpDesk && request.status == 'Pending'"
+                            (click)="
+                              redirectToAssigning(request.network_request_id)
+                            "
                           >
                             ✏️
                           </button>
-                          <button class="btn btn-sm btn-danger mr-2">🗑️</button>
-                          <button class="btn btn-sm btn-success mr-2" (click)="redirectToCommenting(request.network_request_id)">✍️</button>
-                          <button class="btn btn-sm btn-secondary" *ngIf="!request.isCommented" (click)="redirectToCommenting(request.network_request_id)">🥅</button>
+
+                          <button
+                            class="btn btn-sm btn-success mr-2"
+                            *ngIf="displayCommentButton(request)"
+                            (click)="
+                              redirectToCommenting(request.network_request_id)
+                            "
+                          >
+                            ✍️
+                          </button>
+                          <button
+                            class="btn btn-sm btn-danger mr-2"
+                            *ngIf="displayLockedButton(request)"
+                            (click)="
+                              changeStatusForward(request.network_request_id)
+                            "
+                          >
+                            🔒
+                          </button>
+                          <button
+                            class="btn btn-sm btn-secondary"
+                            *ngIf="displayCompletedButton(request.status)"
+                            (click)="
+                              redirectToCommenting(request.network_request_id)
+                            "
+                          >
+                            ✅
+                          </button>
                         </td>
                         <td>{{ request.status }}</td>
                         <td>

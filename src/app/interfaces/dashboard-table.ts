@@ -12,5 +12,9 @@ export interface DashboardTable {
     is_Closed_By: string;
     created_At?: Date;
     isCommented: boolean;
+    isNetwork: boolean;
+    isStorage: boolean;
+    isServer: boolean;
+    isBackup: boolean;
   }
   

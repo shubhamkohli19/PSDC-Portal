@@ -1,4 +1,5 @@
 <div style="width: 80vw; margin: auto;">
+  <h1 class="btn-success" *ngIf="displaySuccess">Your Network Request ID is: {{networkId}}</h1>
   <form class="row g-3" (ngSubmit)="onSubmit()">
     <div class="col-md-6">
       <label for="name" class="form-label">Name</label>

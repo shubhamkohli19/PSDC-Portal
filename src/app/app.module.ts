@@ -20,6 +20,7 @@ import { RoleDashboardComponent } from './pages/RolePanel/role-dashboard/role-da
 import { SidebarPanelComponent } from './components/sidebar-panel/sidebar-panel.component';
 import { AssignNetworkTaskComponent } from './pages/RolePanel/assign-network-task/assign-network-task.component';
 import { EditEngineerComponent } from './pages/RolePanel/edit-engineer/edit-engineer.component';
+import { ViewRequestComponent } from './pages/RolePanel/view-request/view-request.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { EditEngineerComponent } from './pages/RolePanel/edit-engineer/edit-engi
     SidebarPanelComponent,
     AssignNetworkTaskComponent,
     EditEngineerComponent,
+    ViewRequestComponent,
   ],
   imports: [
     BrowserModule,

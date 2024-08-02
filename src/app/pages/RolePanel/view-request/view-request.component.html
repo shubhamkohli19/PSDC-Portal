@@ -1,0 +1,67 @@
+<div class="network-request-container" *ngIf="networkRequest">
+    <h2>Network Access Request Form</h2>
+    <table class="network-request-table">
+        <tr>
+            <td><strong>Network Id</strong></td>
+            <td>{{ networkRequest.network_request_id }}</td>
+            <td><strong>Location Type</strong></td>
+            <td>{{ networkRequest.location_type_id }}</td>
+        </tr>
+        <tr>
+            <td><strong>Contact Person Name</strong></td>
+            <td>{{ networkRequest.contact_name }}</td>
+            <td><strong>Location</strong></td>
+            <td>{{ networkRequest.location_id }}</td>
+        </tr>
+        <tr>
+            <td><strong>Department Name</strong></td>
+            <td>{{ networkRequest.department_id }}</td>
+            <td><strong>Reporting Officer Name</strong></td>
+            <td>{{ networkRequest.officer_name }}</td>
+        </tr>
+        <tr>
+            <td><strong>Designation</strong></td>
+            <td>{{ networkRequest.designation }}</td>
+            <td><strong>Reporting Officer Email</strong></td>
+            <td>{{ networkRequest.govt_email_id }}</td>
+        </tr>
+        <tr>
+            <td><strong>Email</strong></td>
+            <td>{{ networkRequest.email }}</td>
+            <td><strong>Reporting Officer Designation</strong></td>
+            <td>{{ networkRequest.officer_designation }}</td>
+        </tr>
+        <tr>
+            <td><strong>Contact</strong></td>
+            <td>{{ networkRequest.contact_no }}</td>
+            <td><strong>Reporting Officer Mobile Number</strong></td>
+            <td>{{ networkRequest.officer_mobile }}</td>
+        </tr>
+        <tr>
+            <td><strong>Floor Address</strong></td>
+            <td>{{ networkRequest.floorAddress }}</td>
+            <td><strong>Address (Where to be integrated)</strong></td>
+            <td>{{ networkRequest.address }}</td>
+        </tr>
+        <tr>
+            <td><strong>Room No.</strong></td>
+            <td>{{ networkRequest.room_no }}</td>
+            <td><strong>Floor</strong></td>
+            <td>{{ networkRequest.floorAddress }}</td>
+        </tr>
+        <tr>
+            <td><strong>Device Type</strong></td>
+            <td>{{ networkRequest.device_type }}</td>
+            <td><strong>Remarks</strong></td>
+            <td>{{ networkRequest.remarks }}</td>
+        </tr>
+        <tr>
+            <td><strong>Full Office Address</strong></td>
+            <td>{{ networkRequest.address }}</td>
+        </tr>
+        <tr>
+            <td><strong>Duration</strong></td>
+            <td>{{ networkRequest.duration }}</td>
+        </tr>
+    </table>
+</div>

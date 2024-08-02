@@ -5,6 +5,7 @@ import { NetworkMenu } from '../interfaces/networkMenu';
 import { DashboardTable } from '../interfaces/dashboard-table';
 import { AssignNetworkTask } from '../interfaces/assignNetworkTask';
 import { addEngineerComment } from '../interfaces/addEngineerComment';
+import { ViewRequest } from '../interfaces/viewRequest';
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +28,14 @@ export class DashboardService {
     return this.http.put<AssignNetworkTask>(`${this.apiUrl}/assignNetworkTask`, task);
   }
 
-  addEngineerComment(comment: addEngineerComment): Observable<addEngineerComment>{
+  addEngineerComment(comment: addEngineerComment): Observable<addEngineerComment> {
     return this.http.put<addEngineerComment>(`${this.apiUrl}/addEngineerComment`, comment);
+  }
+
+  engineerResolved(id: string | undefined): Observable<string> {
+    return this.http.put<string>(`${this.apiUrl}/engineerResolved/${id}`, {});
+  }
+  getViewRequests(): Observable<ViewRequest[]> {
+    return this.http.get<ViewRequest[]>(`${this.apiUrl}/getViewRequests`);
   }
 }

@@ -27,6 +27,7 @@ export class EditEngineerComponent {
     };
     this.dbService.addEngineerComment(addEngineerComment).subscribe((res) => {
       console.log(res);
+      this.router.navigate(['na-table']);
     })
   }
 }

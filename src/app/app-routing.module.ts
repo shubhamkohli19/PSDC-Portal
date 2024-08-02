@@ -9,6 +9,7 @@ import { NetworkAccessTableComponent } from './pages/RolePanel/network-access-ta
 import { RoleDashboardComponent } from './pages/RolePanel/role-dashboard/role-dashboard.component';
 import { AssignNetworkTaskComponent } from './pages/RolePanel/assign-network-task/assign-network-task.component';
 import { EditEngineerComponent } from './pages/RolePanel/edit-engineer/edit-engineer.component';
+import { ViewRequestComponent } from './pages/RolePanel/view-request/view-request.component';
 
 const routes: Routes = [
   { path: 'homepage', component: HomepageComponent },
@@ -20,7 +21,8 @@ const routes: Routes = [
   { path: 'na-table', component: NetworkAccessTableComponent },
   { path: 'roleDashboard', component: RoleDashboardComponent},
   { path: 'assignNetworkTask', component: AssignNetworkTaskComponent},
-  { path: 'editEngineer', component: EditEngineerComponent}
+  { path: 'editEngineer', component: EditEngineerComponent},
+  { path: 'view-request', component: ViewRequestComponent}
 ];
 
 @NgModule({

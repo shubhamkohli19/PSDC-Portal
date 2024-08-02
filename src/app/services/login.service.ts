@@ -22,11 +22,7 @@ export class LoginService {
             console.log(response);
             localStorage.setItem('token', response.token);
             localStorage.setItem('role', response.role);
-            this.router.navigate(['/homepage']);
-            if(localStorage.getItem('role') == 'admin'){
-              this.router.navigate(['/adminDashboard']);
-            }
-            
+            this.router.navigate(['/adminDashboard']);
           }
           observer.complete();
         },

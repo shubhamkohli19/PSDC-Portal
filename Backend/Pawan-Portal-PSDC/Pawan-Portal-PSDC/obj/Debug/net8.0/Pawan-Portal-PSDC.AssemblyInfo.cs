@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Pawan-Portal-PSDC")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ba729e08a7515fdef8829e7202e7fabe912b2979")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d6ae8ecefe62ad8fb4e6252bfeb09dc6b217b63c")]
 [assembly: System.Reflection.AssemblyProductAttribute("Pawan-Portal-PSDC")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Pawan-Portal-PSDC")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
