@@ -66,5 +66,6 @@ namespace Pawan_Portal_PSDC.Interfaces
     public string Govt_Email_Id { get; set; }
     public string Is_Closed_By { get; set; }
     public DateTime? Created_At { get; set; }
+    public bool isCommented { get; set; }
   }
 }

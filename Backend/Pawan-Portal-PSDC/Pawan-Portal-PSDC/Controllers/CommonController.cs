@@ -34,7 +34,7 @@ namespace Pawan_Portal_PSDC.Controllers
     public async Task<ActionResult<IEnumerable<CategoryWithTypes>>> GetCategoryWithTypes()
     {
       using var connection = GetConnection();
-      var requests = await connection.QueryAsync<CategoryWithTypes>("Select id, name, type_id from categoryWithTypes");
+      var requests = await connection.QueryAsync<CategoryWithTypes>("Select id, name, type_id, shortName from categoryWithTypes");
       return Ok(requests);
     }
 
@@ -42,8 +42,9 @@ namespace Pawan_Portal_PSDC.Controllers
     public async Task<ActionResult<IEnumerable<Locations>>> GetLocations()
     {
       using var connection = GetConnection();
-      var requests = await connection.QueryAsync<Locations>("Select id, name, status, type_id, categorywithtype_id from locations");
+      var requests = await connection.QueryAsync<Locations>("Select id, name, status, type_id, categorywithtype_id, shortName from locations");
       return Ok(requests);
     }
+    
   }
 }

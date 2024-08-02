@@ -1,139 +1,169 @@
 <div class="wrapper">
-    <aside class="main-sidebar sidebar-dark-primary elevation-4">
-        <a href="../index3.html" class="brand-link">
-            <span class="brand-text font-weight-light">Pawan Portal</span>
-        </a>
-        <div class="sidebar">
-            <nav class="mt-2">
-                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
-                    data-accordion="false">
-                    <li class="nav-item">
-                        <a routerLink="/dashboard" class="nav-link active">
-                            <i class="nav-icon fas fa-tachometer-alt"></i>
-                            <p>Dashboard</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a routerLink="/na-table" class="nav-link">
-                            <i class="nav-icon fas fa-th"></i>
-                            <p>Network Request</p>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
+  <app-sidebar-panel></app-sidebar-panel>
+  <div class="content-wrapper">
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Network Request</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a routerLink="#">Home</a></li>
+              <li class="breadcrumb-item active">Network Request</li>
+            </ol>
+          </div>
         </div>
-    </aside>
+      </div>
+    </section>
 
-    <div class="content-wrapper">
-        <section class="content-header">
-            <div class="container-fluid">
-                <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <h1>Network Request</h1>
-                    </div>
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a routerLink="#">Home</a></li>
-                            <li class="breadcrumb-item active">Network Request</li>
-                        </ol>
-                    </div>
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div
+                class="card-header d-flex align-items-center justify-content-around"
+              >
+                <h3 class="card-title">Network Requests</h3>
+                <div class="dropdown">
+                  <button
+                    type="button"
+                    class="btn btn-primary dropdown-toggle"
+                    id="dropdownMenuButton"
+                    data-toggle="dropdown"
+                  >
+                    Fetch Network Requests
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a
+                        class="dropdown-item"
+                        (click)="onFilterButtonClick('Pending')"
+                        >Pending</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        class="dropdown-item"
+                        (click)="onFilterButtonClick('Processing')"
+                        >Processing</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        class="dropdown-item"
+                        (click)="onFilterButtonClick('Completed')"
+                        >Completed</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        class="dropdown-item"
+                        (click)="onFilterButtonClick('Reject')"
+                        >Reject</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        class="dropdown-item"
+                        (click)="onFilterButtonClick('Show All')"
+                        >Show All Requests</a
+                      >
+                    </li>
+                  </ul>
                 </div>
-            </div>
-        </section>
+              </div>
 
-        <section class="content">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-header d-flex align-items-center justify-content-around">
-                                <h3 class="card-title">Network Requests</h3>
-                                <div class="dropdown">
-                                    <button type="button" class="btn btn-primary dropdown-toggle"
-                                        id="dropdownMenuButton" data-toggle="dropdown">
-                                        Fetch Network Requests
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item"
-                                                (click)="onFilterButtonClick('Pending')">Pending</a></li>
-                                        <li><a class="dropdown-item"
-                                                (click)="onFilterButtonClick('Processing')">Processing</a></li>
-                                        <li><a class="dropdown-item"
-                                                (click)="onFilterButtonClick('Completed')">Completed</a></li>
-                                        <li><a class="dropdown-item" (click)="onFilterButtonClick('Reject')">Reject</a>
-                                        </li>
-                                        <li><a class="dropdown-item" (click)="onFilterButtonClick('Show All')">Show All
-                                                Requests</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered table-hover">
-                                        <thead class="thead-light">
-                                            <tr>
-                                                <th scope="col">Sr No</th>
-                                                <th scope="col">Network Id</th>
-                                                <th scope="col">Actions</th>
-                                                <th scope="col">Status</th>
-                                                <th scope="col">Track</th>
-                                                <th scope="col">Closed By</th>
-                                                <th scope="col">Name</th>
-                                                <th scope="col">Designation</th>
-                                                <th scope="col">Email</th>
-                                                <th scope="col">Contact</th>
-                                                <th scope="col">Officer Name</th>
-                                                <th scope="col">Officer Email</th>
-                                                <th scope="col">Officer Contact</th>
-                                                <th scope="col">Request Time</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr *ngFor="let request of paginatedRequests; let i = index">
-                                                <th scope="row">{{ i + 1 + (currentPage - 1) * itemsPerPage }}</th>
-                                                <td>{{ request.network_request_id}}</td>
-                                                <td>
-                                                    <button class="btn btn-sm btn-info mr-2">👁️</button>
-                                                    <button class="btn btn-sm btn-warning mr-2">✏️</button>
-                                                    <button class="btn btn-sm btn-danger">🗑️</button>
-                                                </td>
-                                                <td>{{ request.status }}</td>
-                                                <td>
-                                                    <button class="btn btn-primary"> Track </button>
-                                                </td>
-                                                <td>{{ request.is_Closed_By }}</td>
-                                                <td>{{ request.contact_Name }}</td>
-                                                <td>{{ request.designation }}</td>
-                                                <td>{{ request.email }}</td>
-                                                <td>{{ request.contact_No }}</td>
-                                                <td>{{ request.officer_Name }}</td>
-                                                <td>{{ request.govt_Email_Id }}</td>
-                                                <td>{{ request.officer_Mobile }}</td>
-                                                <td>{{ request.created_At | date:'dd-MM-yyyy' }}</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <nav>
-                                    <ul class="pagination justify-content-center">
-                                        <li class="page-item" [class.disabled]="currentPage === 1">
-                                            <a class="page-link" (click)="setPage(currentPage - 1)">Previous</a>
-                                        </li>
-                                        <li class="page-item" [class.active]="page === currentPage"
-                                            *ngFor="let page of pages">
-                                            <a class="page-link" (click)="setPage(page)">{{ page }}</a>
-                                        </li>
-                                        <li class="page-item" [class.disabled]="currentPage === totalPages">
-                                            <a class="page-link" (click)="setPage(currentPage + 1)">Next</a>
-                                        </li>
-                                    </ul>
-                                </nav>
-                            </div>
-                        </div>
-                    </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table table-bordered table-hover">
+                    <thead class="thead-light">
+                      <tr>
+                        <th scope="col">Sr No</th>
+                        <th scope="col">Network Id</th>
+                        <th scope="col">Actions</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Track</th>
+                        <th scope="col">Closed By</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Designation</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Contact</th>
+                        <th scope="col">Officer Name</th>
+                        <th scope="col">Officer Email</th>
+                        <th scope="col">Officer Contact</th>
+                        <th scope="col">Request Time</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr
+                        *ngFor="let request of paginatedRequests; let i = index"
+                      >
+                        <th scope="row">
+                          {{ i + 1 + (currentPage - 1) * itemsPerPage }}
+                        </th>
+                        <td>{{ request.network_request_id }}</td>
+                        <td>
+                          <button class="btn btn-sm btn-info mr-2">👁️</button>
+                          <button
+                            class="btn btn-sm btn-warning mr-2"
+                            *ngIf="isHelpDesk && (request.status == 'Pending')" (click)="redirectToAssigning(request.network_request_id)"
+                          >
+                            ✏️
+                          </button>
+                          <button class="btn btn-sm btn-danger mr-2">🗑️</button>
+                          <button class="btn btn-sm btn-success mr-2" (click)="redirectToCommenting(request.network_request_id)">✍️</button>
+                          <button class="btn btn-sm btn-secondary" *ngIf="!request.isCommented" (click)="redirectToCommenting(request.network_request_id)">🥅</button>
+                        </td>
+                        <td>{{ request.status }}</td>
+                        <td>
+                          <button class="btn btn-primary">Track</button>
+                        </td>
+                        <td>{{ request.is_Closed_By }}</td>
+                        <td>{{ request.contact_Name }}</td>
+                        <td>{{ request.designation }}</td>
+                        <td>{{ request.email }}</td>
+                        <td>{{ request.contact_No }}</td>
+                        <td>{{ request.officer_Name }}</td>
+                        <td>{{ request.govt_Email_Id }}</td>
+                        <td>{{ request.officer_Mobile }}</td>
+                        <td>{{ request.created_At | date : "dd-MM-yyyy" }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
+                <nav>
+                  <ul class="pagination justify-content-center">
+                    <li class="page-item" [class.disabled]="currentPage === 1">
+                      <a class="page-link" (click)="setPage(currentPage - 1)"
+                        >Previous</a
+                      >
+                    </li>
+                    <li
+                      class="page-item"
+                      [class.active]="page === currentPage"
+                      *ngFor="let page of pages"
+                    >
+                      <a class="page-link" (click)="setPage(page)">{{
+                        page
+                      }}</a>
+                    </li>
+                    <li
+                      class="page-item"
+                      [class.disabled]="currentPage === totalPages"
+                    >
+                      <a class="page-link" (click)="setPage(currentPage + 1)"
+                        >Next</a
+                      >
+                    </li>
+                  </ul>
+                </nav>
+              </div>
             </div>
-        </section>
-    </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
 </div>

@@ -1,0 +1,10 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="options">Assigned User:</label>
+      <select id="options" formControlName="selectedOptions" multiple>
+        <option *ngFor="let option of options" [value]="option">{{ option }}</option>
+      </select>
+    </div>
+    <button type="submit">Assign To</button>
+  </form>
+  

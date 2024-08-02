@@ -11,5 +11,6 @@ export interface DashboardTable {
     govt_Email_Id: string;
     is_Closed_By: string;
     created_At?: Date;
+    isCommented: boolean;
   }
   

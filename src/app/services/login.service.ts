@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Login } from '../interfaces/login';
 
-const API_BASE_URL: string = "https://localhost:44356/api/Login";
+const API_BASE_URL: string = "https://localhost:44352/api/Login";
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +21,12 @@ export class LoginService {
           if (response.token) {
             console.log(response);
             localStorage.setItem('token', response.token);
+            localStorage.setItem('role', response.role);
             this.router.navigate(['/homepage']);
+            if(localStorage.getItem('role') == 'admin'){
+              this.router.navigate(['/adminDashboard']);
+            }
+            
           }
           observer.complete();
         },
@@ -43,6 +48,7 @@ export class LoginService {
 
   logout() {
     localStorage.removeItem('token');
+    localStorage.removeItem('role');
     this.router.navigate(['/homepage']);
   }
 }

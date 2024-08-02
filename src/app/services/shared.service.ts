@@ -9,7 +9,7 @@ import { Department } from '../interfaces/department';
 })
 export class SharedService {
 
-  private apiUrl = 'https://localhost:44356/api/Common';
+  private apiUrl = 'https://localhost:44352/api/Common';
 
   constructor(private http: HttpClient) { }
 

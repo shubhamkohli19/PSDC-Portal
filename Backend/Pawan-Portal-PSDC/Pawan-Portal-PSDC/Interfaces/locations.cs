@@ -7,5 +7,6 @@ namespace Pawan_Portal_PSDC.Interfaces
     public string status { get; set; }
     public int type_id { get; set; }
     public int categorywithtype_id { get; set; }
+    public string shortName { get; set; }
   }
 }

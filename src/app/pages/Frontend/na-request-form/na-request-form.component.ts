@@ -30,6 +30,10 @@ export class NARequestFormComponent implements OnInit {
   districtOptions: CategoryWithTypes[] = [];
   showDistrict = false;
   showLocation = false;
+  clickedDistrictObject: CategoryWithTypes | undefined;
+  clickedLocationObject: Locations | undefined;
+  selectedDistrictShortName: string = '';
+  selectedLocationShortName: string = '';
 
   formData: NetworkRequest = {
     id: 0,
@@ -104,6 +108,10 @@ export class NARequestFormComponent implements OnInit {
     })
     this.formData.networkRequestId = "DGR-DEP-2024-" + this.len.toString();
     console.log(this.formData.networkRequestId);
+
+    const year = new Date().getFullYear();
+    this.formData.networkRequestId = `${this.selectedDistrictShortName}-${this.selectedLocationShortName}-${year}-${this.len.toString()}`;
+    console.log(this.formData.networkRequestId);
     
     const userMail = this.formData.email;
     const userMailBody = this.generateUserEmailBody(this.formData, this.districtName);
@@ -145,6 +153,7 @@ export class NARequestFormComponent implements OnInit {
       console.error('Error sending email', error);
     });
   }
+  
 
   generateOfficerEmailBody(formData: NetworkRequest, districtName: string | undefined): string {
     const formDataEncoded = encodeURIComponent(JSON.stringify(formData));
@@ -410,14 +419,20 @@ export class NARequestFormComponent implements OnInit {
     console.log(this.districtOptions, "options")
   }
 
-  updateLocationOptions(){
+  updateLocationOptions() {
     const selectedDistrictId = this.formData.district;
-    console.log(selectedDistrictId)
-    console.log(this.districtOptions);
-    this.clickedDistObject = this.districtOptions.find(district => district.id === parseInt(selectedDistrictId));    
-    this.districtName = this.clickedDistObject?.name;
+    this.clickedDistrictObject = this.districtOptions.find(district => district.id === parseInt(selectedDistrictId));
+    this.districtName = this.clickedDistrictObject?.name;
+    this.selectedDistrictShortName = this.clickedDistrictObject?.shortName || '';
+
     this.filteredLocations = this.locations.filter(location => location.categorywithtype_id === parseInt(selectedDistrictId));
     this.showLocation = true;
+  }
+
+  onLocationChange() {
+    const selectedLocation = this.formData.location;
+    this.clickedLocationObject = this.filteredLocations.find(location => location.name === selectedLocation);
+    this.selectedLocationShortName = this.clickedLocationObject?.shortName || '';
   }
 
   resetForm() {

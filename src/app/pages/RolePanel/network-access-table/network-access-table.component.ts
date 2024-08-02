@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DashboardTable } from '../../../interfaces/dashboard-table';
 import { DashboardService } from '../../../services/dashboard.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-network-access-table',
@@ -10,6 +11,7 @@ import { DashboardService } from '../../../services/dashboard.service';
 
 export class NetworkAccessTableComponent implements OnInit {
   networkRequests: DashboardTable[] = [];
+  isHelpDesk: boolean = (localStorage.getItem('role') == 'helpDesk');
   paginatedRequests: DashboardTable[] = [];
   itemsPerPage = 5;
   currentPage = 1;
@@ -17,7 +19,7 @@ export class NetworkAccessTableComponent implements OnInit {
   pages: number[] = [];
   selectedStatus: string = '';
 
-  constructor(private dashboardService: DashboardService) { }
+  constructor(private dashboardService: DashboardService, private router: Router) { }
 
   ngOnInit() {
     this.fetchNetworkRequests();
@@ -58,32 +60,35 @@ export class NetworkAccessTableComponent implements OnInit {
 
   onFilterButtonClick(status: string) {
     this.selectedStatus = status;
-    this.currentPage = 1; // Reset to first page whenever the filter is applied
+    this.currentPage = 1;
     this.applyFilters();
   }
 
   onExportButtonClick(format: string) {
     console.log(`Exporting data as ${format}`);
-    // Add logic to export data in the specified format (CSV, PDF, Excel, Copy)
   }
 
   onViewClick(requestId: string) {
     console.log(`Viewing request with ID: ${requestId}`);
-    // Add logic to handle viewing a network request
   }
 
   onEditClick(requestId: string) {
     console.log(`Editing request with ID: ${requestId}`);
-    // Add logic to handle editing a network request
   }
 
   onDeleteClick(requestId: string) {
     console.log(`Deleting request with ID: ${requestId}`);
-    // Add logic to handle deleting a network request
   }
 
   onTrackClick(requestId: string) {
     console.log(`Tracking request with ID: ${requestId}`);
-    // Add logic to handle tracking a network request
+  }
+
+  redirectToAssigning(id: string | undefined){
+    this.router.navigate(['assignNetworkTask'], { state: { id } });
+  }
+
+  redirectToCommenting(id: string | undefined){
+    this.router.navigate(['editEngineer'], { state: { id } });
   }
 }

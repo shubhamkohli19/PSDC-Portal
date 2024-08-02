@@ -1,13 +1,13 @@
+using Pawan_Portal_PSDC.Interfaces;
 using Dapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
-using Pawan_Portal_PSDC.Interfaces;
 using System.Data.SqlClient;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 
-namespace Pawan_Portal_PSDC.Controllers
+namespace Backend.Controllers
 {
   [Route("api/[controller]")]
   [ApiController]
@@ -54,6 +54,17 @@ namespace Pawan_Portal_PSDC.Controllers
       return (authenticatedUser, "Success");
     }
 
+    private string GetRole(Login user)
+    {
+      using var connection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection"));
+      connection.Open();
+      var query = "SELECT role FROM users WHERE email = @email AND password = @password";
+      var result = connection.QueryFirstOrDefault<string>(query, new { email = user.email, password = user.password });
+      connection.Close();
+
+      return result;
+    }
+
     private string GenerateToken(Login users)
     {
       try
@@ -87,9 +98,9 @@ namespace Pawan_Portal_PSDC.Controllers
       if (authenticatedUser != null)
       {
         var token = GenerateToken(authenticatedUser);
-        using var connection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection"));
-        var query = "EXEC AuthenticateUser @email = @email, @password = @password";
-        return Ok(new { token });
+        var role = GetRole(authenticatedUser);
+
+        return Ok(new { token, role });
       }
       else
       {

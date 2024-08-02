@@ -16,6 +16,10 @@ import { LoginService } from './services/login.service';
 import { VerifyNaRequestComponent } from './pages/verification-pages/verify-na-request/verify-na-request.component';
 import { DashboardComponent } from './pages/RolePanel/dashboard/dashboard.component';
 import { NetworkAccessTableComponent } from './pages/RolePanel/network-access-table/network-access-table.component';
+import { RoleDashboardComponent } from './pages/RolePanel/role-dashboard/role-dashboard.component';
+import { SidebarPanelComponent } from './components/sidebar-panel/sidebar-panel.component';
+import { AssignNetworkTaskComponent } from './pages/RolePanel/assign-network-task/assign-network-task.component';
+import { EditEngineerComponent } from './pages/RolePanel/edit-engineer/edit-engineer.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +33,10 @@ import { NetworkAccessTableComponent } from './pages/RolePanel/network-access-ta
     VerifyNaRequestComponent,
     DashboardComponent,
     NetworkAccessTableComponent,
+    RoleDashboardComponent,
+    SidebarPanelComponent,
+    AssignNetworkTaskComponent,
+    EditEngineerComponent,
   ],
   imports: [
     BrowserModule,

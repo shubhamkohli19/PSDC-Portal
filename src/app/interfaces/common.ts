@@ -2,6 +2,7 @@ export interface CategoryWithTypes{
     id: number;
     name: string;
     type_id: number;
+    shortName: string;
 }
 
 export interface Locations{
@@ -10,4 +11,5 @@ export interface Locations{
     status: number;
     type_id: number;
     categorywithtype_id: number;
+    shortName: string;
 }
