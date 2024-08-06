@@ -38,4 +38,8 @@ export class DashboardService {
   getViewRequests(): Observable<ViewRequest[]> {
     return this.http.get<ViewRequest[]>(`${this.apiUrl}/getViewRequests`);
   }
+
+  helpDeskCompleted(id: string | undefined): Observable<string> {
+    return this.http.put<string>(`${this.apiUrl}/helpdeskCompleted/${id}`, {});
+  }
 }

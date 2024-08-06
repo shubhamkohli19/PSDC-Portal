@@ -120,43 +120,46 @@ export class NetworkAccessTableComponent implements OnInit {
   }
 
   displayLockedButton(request: DashboardTable): boolean {
-    if (this.isHelpDesk) {
-      return false;
+    if(request.status != 'Completed'){
+      if (this.isHelpDesk) {
+        return false;
+      }
+      else if (request.status != 'Forward') {
+        if (request.isBackup && this.role == 'backup' && request.isCommented) {
+          return true;
+        }
+        else if (request.isServer && this.role == 'server' && request.isCommented) {
+          return true;
+        }
+        else if (request.isStorage && this.role == 'storage' && request.isCommented) {
+          return true;
+        }
+        else if (request.isNetwork && this.role == 'network' && request.isCommented) {
+          return true;
+        }
+      }
     }
-    else if (request.status != 'Forward') {
-      if (request.isBackup && this.role == 'backup' && request.isCommented) {
-        return true;
-      }
-      else if (request.isServer && this.role == 'server' && request.isCommented) {
-        return true;
-      }
-      else if (request.isStorage && this.role == 'storage' && request.isCommented) {
-        return true;
-      }
-      else if (request.isNetwork && this.role == 'network' && request.isCommented) {
-        return true;
-      }
-    }
-
     return false;
   }
 
   displayRejectButton(request: DashboardTable): boolean {
-    if (this.isHelpDesk) {
-      return true;
-    }
-    else if (request.status != 'Forward') {
-      if (request.isBackup && this.role == 'backup') {
+    if(request.status != 'Completed'){
+      if (this.isHelpDesk) {
         return true;
       }
-      else if (request.isServer && this.role == 'server') {
-        return true;
-      }
-      else if (request.isStorage && this.role == 'storage') {
-        return true;
-      }
-      else if (request.isNetwork && this.role == 'network') {
-        return true;
+      else if (request.status != 'Forward') {
+        if (request.isBackup && this.role == 'backup') {
+          return true;
+        }
+        else if (request.isServer && this.role == 'server') {
+          return true;
+        }
+        else if (request.isStorage && this.role == 'storage') {
+          return true;
+        }
+        else if (request.isNetwork && this.role == 'network') {
+          return true;
+        }
       }
     }
     return false;
@@ -172,5 +175,11 @@ export class NetworkAccessTableComponent implements OnInit {
   }
   viewRequest(id: string | undefined) {
     this.router.navigate(['view-request'], { state: { id } });
+  }
+
+  completeTask(id: string | undefined){
+    this.dashboardService.helpDeskCompleted(id).subscribe((res) => {
+      this.fetchNetworkRequests();
+    })
   }
 }

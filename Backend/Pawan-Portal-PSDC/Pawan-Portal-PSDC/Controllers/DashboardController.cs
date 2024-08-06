@@ -134,6 +134,25 @@ namespace Pawan_Portal_PSDC.Controllers
       return NoContent();
     }
 
+    [HttpPut("helpdeskCompleted/{id}")]
+    public async Task<IActionResult> HelpDeskCompleted(string id)
+    {
+      using var connection = GetConnection();
+
+      var parameters = new DynamicParameters();
+      parameters.Add("id", id);
+
+      var query = $"UPDATE NetworkRequests SET status = 'Completed' WHERE network_request_id = @id";
+
+      var affectedRows = await connection.ExecuteAsync(query, parameters);
+      if (affectedRows == 0)
+      {
+        return NotFound();
+      }
+
+      return NoContent();
+    }
+
     [HttpGet("getViewRequests")]
     public async Task<ActionResult<IEnumerable<ViewRequest>>> GetViewRequests()
     {

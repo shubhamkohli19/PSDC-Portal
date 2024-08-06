@@ -149,7 +149,7 @@
                             class="btn btn-sm btn-secondary"
                             *ngIf="displayCompletedButton(request.status)"
                             (click)="
-                              redirectToCommenting(request.network_request_id)
+                              completeTask(request.network_request_id)
                             "
                           >
                             ✅
