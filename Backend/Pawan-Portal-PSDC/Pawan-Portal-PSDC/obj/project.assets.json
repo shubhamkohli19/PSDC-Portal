@@ -1286,11 +1286,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\PSDC-Portal\\PSDC-Portal\\Backend\\Pawan-Portal-PSDC\\Pawan-Portal-PSDC\\Pawan-Portal-PSDC.csproj",
+      "projectUniqueName": "D:\\Angular\\PSDC-Portal\\PSDC-Portal\\Backend\\Pawan-Portal-PSDC\\Pawan-Portal-PSDC\\Pawan-Portal-PSDC.csproj",
       "projectName": "Pawan-Portal-PSDC",
-      "projectPath": "D:\\PSDC-Portal\\PSDC-Portal\\Backend\\Pawan-Portal-PSDC\\Pawan-Portal-PSDC\\Pawan-Portal-PSDC.csproj",
+      "projectPath": "D:\\Angular\\PSDC-Portal\\PSDC-Portal\\Backend\\Pawan-Portal-PSDC\\Pawan-Portal-PSDC\\Pawan-Portal-PSDC.csproj",
       "packagesPath": "C:\\Users\\Shubham Kohli\\.nuget\\packages\\",
-      "outputPath": "D:\\PSDC-Portal\\PSDC-Portal\\Backend\\Pawan-Portal-PSDC\\Pawan-Portal-PSDC\\obj\\",
+      "outputPath": "D:\\Angular\\PSDC-Portal\\PSDC-Portal\\Backend\\Pawan-Portal-PSDC\\Pawan-Portal-PSDC\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Shubham Kohli\\AppData\\Roaming\\NuGet\\NuGet.Config",

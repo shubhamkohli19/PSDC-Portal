@@ -88,19 +88,14 @@ namespace Pawan_Portal_PSDC.Controllers
       return CreatedAtAction(nameof(GetNetworkRequest), new { id = request.Id }, request);
     }
 
-    [HttpPut("{id}")]
-    public async Task<IActionResult> PutNetworkRequest(int id, [FromBody] NetworkRequest request)
+    [HttpPut("updateNetworkRequest")]
+    public async Task<IActionResult> PutNetworkRequest([FromBody] UpdateNetworkRequest request)
     {
-      if (id != request.Id)
-      {
-        return BadRequest();
-      }
-
       using var connection = GetConnection();
       var query = @"
                 UPDATE NetworkRequests
-                SET NetworkRequestId = @NetworkRequestId, ContactName = @ContactName, Designation = @Designation, DepartmentId = @DepartmentId, DeviceType = @DeviceType, ContactNo = @ContactNo, FloorAddress = @FloorAddress, RoomNo = @RoomNo, LocationTypeId = @LocationTypeId, LocationId = @LocationId, Address = @Address, SiteName = @SiteName, Email = @Email, MacIdWired = @MacIdWired, MacIdWifi = @MacIdWifi, EngineerComment = @EngineerComment, EngineerId = @EngineerId, Remarks = @Remarks, Comment = @Comment, Status = @Status, Reason = @Reason, AdhaarNumber = @AdhaarNumber, Declaration = @Declaration, UserId = @UserId, UserTo = @UserTo, RoleId = @RoleId, OfficerName = @OfficerName, OfficerMobile = @OfficerMobile, OfficerDesignation = @OfficerDesignation, GovtEmailId = @GovtEmailId, EmailVerifiedAt = @EmailVerifiedAt, IsWithdrawal = @IsWithdrawal, IsClosedBy = @IsClosedBy, RequestTime = @RequestTime, ForwardTimeEngineer = @ForwardTimeEngineer, ForwardTimeHelpdesk = @ForwardTimeHelpdesk, WithdrawalReason = @WithdrawalReason, WithdrawalStatus = @WithdrawalStatus, WithdrawalRequestDate = @WithdrawalRequestDate, WithdrawalForwardTimeEngineer = @WithdrawalForwardTimeEngineer, WithdrawalForwardTimeHelpdesk = @WithdrawalForwardTimeHelpdesk, WithdrawalClosedBy = @WithdrawalClosedBy, Duration = @Duration, EmailStatus = @EmailStatus, EmailSentTime = @EmailSentTime, CreatedAt = @CreatedAt, UpdatedAt = @UpdatedAt
-                WHERE Id = @Id";
+                SET Comment = @Comment, Status = @Status, isCommented = @isCommented
+                WHERE network_request_id = @network_request_id";
 
       var affectedRows = await connection.ExecuteAsync(query, request);
       if (affectedRows == 0)

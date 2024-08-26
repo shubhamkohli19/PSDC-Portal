@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NetworkRequestService } from '../../../services/network-request.service';
 import { EmailService } from '../../../services/email.service';
+import { NetworkRequest } from '../../../interfaces/network-request';
+import { UpdateNetworkRequest } from './../../../interfaces/updateNetworkRequest';
 
 @Component({
   selector: 'app-verify-na-request',
@@ -9,36 +11,38 @@ import { EmailService } from '../../../services/email.service';
   styleUrl: './verify-na-request.component.css'
 })
 
-export class VerifyNaRequestComponent implements OnInit{
-  userData: any;
-  userName: string = '';
-  userEmail: string = '';
+export class VerifyNaRequestComponent implements OnInit {
+  request: UpdateNetworkRequest = {
+    network_request_id: '',
+    Comment: '',
+    Status: '',
+    isCommented: false,
+  };
+  userData!: NetworkRequest;
+  userEmail: string | undefined = '';
   networkId: string = '';
-  remarks: string = '';
+  remarks: string | undefined = '';
   comment: string = '';
-  reviewable: boolean = true;
+  reviewable: boolean | undefined = true;
 
-  constructor(private route: ActivatedRoute, private naService: NetworkRequestService, private emailService: EmailService) {}
+  constructor(private route: ActivatedRoute, private naService: NetworkRequestService, private emailService: EmailService) { }
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
       if (params['data']) {
-        this.userData = JSON.parse(decodeURIComponent(params['data']));
-        this.userName = this.userData.contactName;
-        this.userEmail = this.userData.email;
-        this.networkId = this.userData.networkRequestId;
-        console.log(this.networkId);
-        this.remarks = this.userData.remarks;
-        console.log(this.userData);
+        this.networkId = JSON.parse(decodeURIComponent(params['data']));
       }
     });
-    this.naService.checkExistingRequest(this.userData.networkRequestId).subscribe(response => {
-      this.reviewable = response;
-      console.log(response);
+
+    this.naService.verificationNA(this.networkId).subscribe(response => {
+      this.userData = response;
+      console.log(this.userData);
+      this.userEmail = this.userData.email;
+      this.remarks = this.userData.remarks;
+      this.reviewable = !!(this.userData.comment && this.userData.comment.trim());
     });
-    
   }
-  
+
   generateUserApproveEmail(userData: any) {
     return `<!DOCTYPE html>
 <html>
@@ -294,24 +298,25 @@ export class VerifyNaRequestComponent implements OnInit{
   }
 
   approveRequest() {
-    this.userData.status = "Pending";
-    this.userData.comment = this.comment;
-    console.log('Request approved with remarks:', this.remarks);
-    this.naService.addNetworkRequest(this.userData).subscribe(response => {
-      console.log(response);
-    })
+    this.request.network_request_id = this.networkId;
+    this.request.Status = "Pending";
+    this.request.Comment = this.comment;
+    console.log(this.request);
 
-    const userMail = this.userData.email;
+    this.naService.updateNetworkRequest(this.request).subscribe(() => {});
+    
+
+    const userMail = this.userEmail;
     const userMailBody = this.generateUserApproveEmail(this.userData);
     let userMailData: FormData = new FormData();
-    
+
     if (userMail) {
       userMailData.append("recipient_email", userMail);
     }
     userMailData.append("subject", "Network Access Request Approved");
     userMailData.append("body", userMailBody);
     userMailData.append("sender", "noreply@punjab.gov.in");
-    userMailData.append("cc", "legendthe727@gmail.com");
+    userMailData.append("cc", "");
 
     this.emailService.sendEmail(userMailData).subscribe(response => {
       console.log('Email sent successfully', response);
@@ -332,14 +337,14 @@ export class VerifyNaRequestComponent implements OnInit{
     const userMail = this.userData.email;
     const userMailBody = this.generateUserRejectEmail(this.userData);
     let userMailData: FormData = new FormData();
-    
+
     if (userMail) {
       userMailData.append("recipient_email", userMail);
     }
     userMailData.append("subject", "Network Access Request Rejected");
     userMailData.append("body", userMailBody);
     userMailData.append("sender", "noreply@punjab.gov.in");
-    userMailData.append("cc", "legendthe727@gmail.com");
+    userMailData.append("cc", "");
 
     this.emailService.sendEmail(userMailData).subscribe(response => {
       console.log('Email sent successfully', response);

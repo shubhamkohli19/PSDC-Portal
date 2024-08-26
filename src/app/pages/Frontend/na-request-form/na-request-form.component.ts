@@ -86,7 +86,8 @@ export class NARequestFormComponent implements OnInit {
     emailStatus: false,
     emailSentTime: new Date(),
     createdAt: new Date(),
-    updatedAt: new Date()
+    updatedAt: new Date(),
+    isCommented: false
   };
 
   constructor(private networkRequestService: NetworkRequestService, private emailService: EmailService, private sharedService: SharedService) { }
@@ -130,10 +131,13 @@ export class NARequestFormComponent implements OnInit {
     userMailData.append("subject", "Network Access Request Submit Successfully");
     userMailData.append("body", userMailBody);
     userMailData.append("sender", "noreply@punjab.gov.in");
-    userMailData.append("cc", "legendthe727@gmail.com");
+    userMailData.append("cc", "");
 
     this.emailService.sendEmail(userMailData).subscribe(response => {
       console.log('Email sent successfully', response);
+      var formEncoded = encodeURIComponent(JSON.stringify(this.formData));
+      formEncoded = `http://localhost:4200/verify-na-request?data=${formEncoded}`;
+      console.log(formEncoded);
       this.resetForm();
     }, error => {
       console.error('Error sending email', error);
@@ -150,7 +154,7 @@ export class NARequestFormComponent implements OnInit {
     govtMailData.append("subject", "Network Access Request Details");
     govtMailData.append("body", govtMailBody);
     govtMailData.append("sender", "noreply@punjab.gov.in");
-    govtMailData.append("cc", "legendthe727@gmail.com");
+    govtMailData.append("cc", "");
     
     this.emailService.sendEmail(govtMailData).subscribe(response => {
       console.log('Govt Email sent successfully', response);
@@ -159,11 +163,16 @@ export class NARequestFormComponent implements OnInit {
 
       console.error('Error sending email', error);
     });
+
+    this.networkRequestService.addNetworkRequest(this.formData).subscribe(response => {
+      console.log(response);
+    })
+    console.log(this.formData)
   }
   
 
   generateOfficerEmailBody(formData: NetworkRequest, districtName: string | undefined): string {
-    const formDataEncoded = encodeURIComponent(JSON.stringify(formData));
+    const formDataEncoded = encodeURIComponent(JSON.stringify(formData.networkRequestId));
     return `
       <!DOCTYPE html>
       <html>
@@ -492,7 +501,8 @@ export class NARequestFormComponent implements OnInit {
       emailStatus: false,
       emailSentTime: new Date(),
       createdAt: new Date(),
-      updatedAt: new Date()
+      updatedAt: new Date(),
+      isCommented: false
     };
 
     this.showDistrict = false;

@@ -72,4 +72,12 @@ namespace Pawan_Portal_PSDC.Interfaces
     public bool isServer { get; set; }
     public bool isBackup { get; set; }
   }
+
+  public class UpdateNetworkRequest
+  {
+    public string network_request_id { get; set; }
+    public string Status { get; set; }
+    public string Comment { get; set; }
+    public bool isCommented { get; set; }
+  }
 }

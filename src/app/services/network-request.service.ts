@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { NetworkRequest } from '../interfaces/network-request';
+import { VerificationNA } from '../interfaces/verificationNA';
+import { UpdateNetworkRequest } from '../interfaces/updateNetworkRequest';
 
 @Injectable({
   providedIn: 'root'
@@ -32,11 +34,15 @@ export class NetworkRequestService {
     return this.http.post<NetworkRequest>(this.apiUrl, request);
   }
 
-  updateNetworkRequest(id: number, request: NetworkRequest): Observable<void> {
-    return this.http.put<void>(`${this.apiUrl}/${id}`, request);
+  updateNetworkRequest(request: UpdateNetworkRequest): Observable<void> {
+    return this.http.put<void>(`${this.apiUrl}/updateNetworkRequest`, request);
   }
 
   deleteNetworkRequest(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
+
+  verificationNA(id: string): Observable<NetworkRequest> {
+    return this.http.get<NetworkRequest>(`https://localhost:44352/api/Verification/${id}`);
   }
 }
